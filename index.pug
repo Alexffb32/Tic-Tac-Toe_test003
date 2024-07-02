@@ -1,0 +1,47 @@
+link(rel="stylesheet", href="style.scss")
+
+.tic-tac-toe
+  - for (var turn = 1; turn <= 9; turn++)
+    - for (var row = 1; row <= 3; row++)
+      - for (var column = 1; column <= 3; column++)
+        - var player = "1"
+        - var positionHorizontal = ""
+        - var positionVertical = ""
+        - var positionDiagonal = ""
+        
+        if( turn % 2 == 0 )
+          - var player = "2"
+          
+        if( column == 1 )
+          - var positionHorizontal = " left first-column"
+        else if( column == 2 )
+          - var positionHorizontal = " middle second-column"
+        else if( column == 3 )
+          - var positionHorizontal = " right third-column"
+         
+        if( row == 1 )
+          - var positionVertical = " top first-row"
+        else if( row == 2 )
+          - var positionVertical = " center second-row"
+        else if( row == 3 )
+          - var positionVertical = " bottom third-row"
+        
+        if( row == 1 && column == 1 )
+          - var positionDiagonal = " first-diagonal"
+        else if( row == 1 && column == 3 )
+          - var positionDiagonal = " second-diagonal"
+        else if( row == 2 && column == 2 )
+          - var positionDiagonal = " first-diagonal second-diagonal"
+        else if( row == 3 && column == 1 )
+          - var positionDiagonal = " second-diagonal"
+        else if( row == 3 && column == 3 )
+          - var positionDiagonal = " first-diagonal"
+        
+        input(id="block" + turn + "-" + row + "-" + column type="radio" class="player-" + player + positionHorizontal + positionVertical + positionDiagonal + " turn-" + turn)
+        label(for="block" + turn + "-" + row + "-" + column class="turn-" + turn)
+
+  .end
+    h3
+    a(href="") Restart
+    
+h5 Note: use the Full Page view for the best experience.
